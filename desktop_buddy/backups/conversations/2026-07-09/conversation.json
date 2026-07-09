@@ -1,0 +1,288 @@
+[
+  {
+    "timestamp": "2026-07-09T04:49:19.864Z",
+    "sender": "user",
+    "content": "what's on my desk",
+    "inputType": "speech"
+  },
+  {
+    "timestamp": "2026-07-09T04:49:21.404Z",
+    "sender": "bubble",
+    "content": "Failed to capture or recognize objects. Please verify the webcam is connected and the LLaVA Ollama server is running. Error: browserType.launch: Executable doesn't exist at C:\\Users\\Drone_harjit\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1228\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+    "inputType": "bubble",
+    "model": "gemma2:2b"
+  },
+  {
+    "timestamp": "2026-07-09T04:49:35.123Z",
+    "sender": "user",
+    "content": "what's on my desk",
+    "inputType": "speech"
+  },
+  {
+    "timestamp": "2026-07-09T04:49:36.652Z",
+    "sender": "bubble",
+    "content": "Failed to capture or recognize objects. Please verify the webcam is connected and the LLaVA Ollama server is running. Error: browserType.launch: Executable doesn't exist at C:\\Users\\Drone_harjit\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1228\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+    "inputType": "bubble",
+    "model": "gemma2:2b"
+  },
+  {
+    "timestamp": "2026-07-09T04:55:22.795Z",
+    "sender": "user",
+    "content": "what's on my desk",
+    "inputType": "speech"
+  },
+  {
+    "timestamp": "2026-07-09T04:57:05.177Z",
+    "sender": "bubble",
+    "content": " The image shows a person's head from the back, facing a light fixture with several bulbs against a white background. Above the head, there is a dark ceiling that appears to have beams or slats. In the foreground, part of a light fixture or lampshade is visible, suggesting that the photo may have been taken in an indoor space, possibly a lobby or waiting area due to the presence of the ceiling with lighting fixtures. The style of the image is a standard photograph, and there are no texts or distinguishing marks on the objects in the frame. ",
+    "inputType": "bubble",
+    "model": "gemma2:2b"
+  },
+  {
+    "timestamp": "2026-07-09T04:58:02.467Z",
+    "sender": "user",
+    "content": "what's up my desk",
+    "inputType": "speech"
+  },
+  {
+    "timestamp": "2026-07-09T04:58:16.316Z",
+    "sender": "bubble",
+    "content": "Not much, just chilling here!  What about you? Anything exciting happening today? 😊",
+    "inputType": "bubble",
+    "model": "gemma2:2b"
+  },
+  {
+    "timestamp": "2026-07-09T04:58:41.259Z",
+    "sender": "user",
+    "content": "what do you see",
+    "inputType": "speech"
+  },
+  {
+    "timestamp": "2026-07-09T04:59:59.210Z",
+    "sender": "bubble",
+    "content": " The image shows a person holding up a clear bottle, likely containing water. Behind the person, there is an interior space with a tiled wall and ceiling, and what appears to be a room with lighting fixtures. The focus of the photo seems to be on the act of drinking from a water bottle, as indicated by the action captured in the photo. ",
+    "inputType": "bubble",
+    "model": "gemma2:2b"
+  },
+  {
+    "timestamp": "2026-07-09T05:01:01.804Z",
+    "sender": "user",
+    "content": "what do you see",
+    "inputType": "speech"
+  },
+  {
+    "timestamp": "2026-07-09T05:02:52.645Z",
+    "sender": "bubble",
+    "content": " The image shows an office desk with various items arranged on it. There are two laptops, one to the left and the other to the right side of the desk, both open with their screens facing towards us. Between these two devices, there appears to be a charger cable for one of the laptops.\n\nTo the left of the laptop on the right, there's a black cord or cable coiled up, possibly related to the electronics on the desk. In front of the laptop on the left, there is an assortment of wires or cables plugged into a power strip. The power strip is connected to a white wall outlet and also has two USB cables plugged directly into it.\n\nOn the right side of the desk, there are additional wires or cables that are not plugged into anything. Above these wires, there's a mouse on a mouse pad, which sits in front of the laptop to its right. The mouse and mousepad appear to be placed on top of a white paper or document, which is resting on the desk.\n\nThe background behind the desk is out of focus, but it seems to include a wall and possibly some shelving or storage units. The image has a slightly blurry quality, especially around the edges where the focus is less sharp. ",
+    "inputType": "bubble",
+    "model": "gemma2:2b"
+  },
+  {
+    "timestamp": "2026-07-09T05:12:20.211Z",
+    "sender": "user",
+    "content": "search for ASP 32",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T05:12:21.457Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T05:12:29.153Z",
+    "sender": "user",
+    "content": "search ASP 32",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T05:12:29.455Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T05:12:48.054Z",
+    "sender": "user",
+    "content": "search for ESP 32",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T05:12:48.382Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T05:18:31.465Z",
+    "sender": "user",
+    "content": "watch for ESP 32",
+    "inputType": "speech"
+  },
+  {
+    "timestamp": "2026-07-09T05:18:40.913Z",
+    "sender": "user",
+    "content": "search for ESP 32",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T05:18:42.405Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T05:18:43.706Z",
+    "sender": "bubble",
+    "content": "Of course!  I'll keep my eye out for any ESP 32 mentions. 💖  Let me know if you need anything else. 😊",
+    "inputType": "bubble",
+    "model": "gemma2:2b"
+  },
+  {
+    "timestamp": "2026-07-09T05:19:17.599Z",
+    "sender": "user",
+    "content": "Raspberry Pi",
+    "inputType": "speech"
+  },
+  {
+    "timestamp": "2026-07-09T05:19:22.794Z",
+    "sender": "bubble",
+    "content": "Oh, raspberry pi!  A tiny powerhouse for all sorts of projects. 😊 What can I help you with today?",
+    "inputType": "bubble",
+    "model": "gemma2:2b"
+  },
+  {
+    "timestamp": "2026-07-09T05:19:35.453Z",
+    "sender": "user",
+    "content": "search for Raspberry Pi",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T05:19:35.975Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T06:35:07.363Z",
+    "sender": "user",
+    "content": "search for",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T06:35:07.376Z",
+    "sender": "bubble",
+    "content": "I opened the browser search results.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T06:35:15.412Z",
+    "sender": "user",
+    "content": "ATM",
+    "inputType": "speech"
+  },
+  {
+    "timestamp": "2026-07-09T06:35:22.370Z",
+    "sender": "user",
+    "content": "search ATM",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T06:35:24.362Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T06:35:28.206Z",
+    "sender": "bubble",
+    "content": "Oh! You need to get some cash?  Let me help you find an ATM near you. 😊 Just tell me where you are!  🗺️",
+    "inputType": "bubble",
+    "model": "gemma2:2b"
+  },
+  {
+    "timestamp": "2026-07-09T06:35:56.834Z",
+    "sender": "user",
+    "content": "search YouTube for airtels",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T06:35:57.323Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T06:45:52.746Z",
+    "sender": "user",
+    "content": "searching you",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T06:45:53.180Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T06:46:02.750Z",
+    "sender": "user",
+    "content": "not for YouTube",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T06:46:03.086Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T06:46:09.226Z",
+    "sender": "user",
+    "content": "search airtels",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T06:46:09.547Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T06:46:18.029Z",
+    "sender": "user",
+    "content": "search for tools",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T06:46:18.345Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  },
+  {
+    "timestamp": "2026-07-09T06:57:12.353Z",
+    "sender": "user",
+    "content": "search ASP 32",
+    "inputType": "text"
+  },
+  {
+    "timestamp": "2026-07-09T06:57:12.652Z",
+    "sender": "bubble",
+    "content": "I searched that on Chrome for you.",
+    "inputType": "bubble",
+    "model": "Chrome Search"
+  }
+]

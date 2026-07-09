@@ -1,0 +1,11 @@
+google_credentials.json
+dashboard-server/google_credentials.json
+dashboard-server/google_tokens.json
+dashboard-server/node_modules/
+jdk/
+jdk.zip
+.gradle/
+build/
+local.properties
+.idea/
+*.iml

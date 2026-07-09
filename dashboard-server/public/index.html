@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bubble AI Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-decor">
+    <div class="circle circle-1"></div>
+  </div>
+
+  <div class="dashboard-layout">
+    <!-- Panel 1: Collapsible Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-area">
+          <div class="logo-title-row">
+            <span class="logo-icon"><img src="chat.svg" class="icon-svg" alt="Bubble logo" style="width: 1.25rem; height: 1.25rem; filter: invert(1);"></span>
+            <span class="logo-text">Bubble AI</span>
+          </div>
+          <button id="toggle-sidebar-btn" class="sidebar-toggle-btn" title="Collapse Sidebar">
+            <span class="toggle-icon">◀</span>
+          </button>
+        </div>
+        <div class="sidebar-actions-row">
+          <button id="new-chat-btn" class="btn btn-primary new-chat-btn">
+            <span>+</span>
+            <span> New Chat</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="sidebar-search">
+        <div class="search-input-wrapper">
+          <input type="text" id="search-history" placeholder="Search conversations...">
+        </div>
+      </div>
+
+      <div class="sidebar-history-container" id="history-container">
+        <!-- Rendered dynamically by app.js -->
+        <div class="history-group">
+          <div class="history-group-title">Today</div>
+          <div class="history-list" id="history-today"></div>
+        </div>
+        <div class="history-group">
+          <div class="history-group-title">Yesterday</div>
+          <div class="history-list" id="history-yesterday"></div>
+        </div>
+        <div class="history-group">
+          <div class="history-group-title">Previous 7 Days</div>
+          <div class="history-list" id="history-week"></div>
+        </div>
+        <div class="history-group">
+          <div class="history-group-title">Older</div>
+          <div class="history-list" id="history-older"></div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer" style="padding: 1rem; display: flex; justify-content: center;">
+        <button id="settings-btn" class="btn btn-secondary settings-footer-btn" style="display: flex; align-items: center; gap: 0.5rem; width: 100%; justify-content: center; font-size: 0.85rem; padding: 0.5rem 1rem; border-radius: 8px;">
+          <span><img src="brain.svg" class="icon-svg-inline" style="width: 14px; height: 14px; filter: invert(1); vertical-align: middle;"></span>
+          <span>Settings</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Panel 2: Center Panel (Main Chat Interface) -->
+    <main class="chat-main">
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <button id="expand-sidebar-btn" class="sidebar-expand-btn hidden" title="Expand Sidebar">
+            <span>▶</span>
+          </button>
+          <div class="active-model-display">
+            <span class="model-badge"><img src="brain.svg" class="icon-svg-inline" style="width: 14px; height: 14px; filter: invert(1); vertical-align: middle; margin-right: 4px;"></span>
+            <span id="active-model-name">Gemma 2B</span>
+          </div>
+        </div>
+        <div class="top-bar-right">
+          <div class="telemetry-pill" id="conn-pill" title="Client Link Status">
+            <span class="pill-dot inactive" id="conn-dot"></span>
+            <span id="conn-text">OFFLINE</span>
+          </div>
+          <div class="telemetry-pill" id="cal-pill" title="Google Calendar Sync">
+            <span class="pill-dot inactive" id="cal-dot"></span>
+            <span>CALENDAR</span>
+          </div>
+          <div class="telemetry-pill" id="mic-pill" title="Microphone Pipeline">
+            <span class="pill-dot inactive" id="mic-dot"></span>
+            <span id="mic-status-text">STANDBY</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Chat Feed Container -->
+      <div class="feed-container chat-log-feed" id="feed-container">
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">
+            <div class="bubble-core-orb">
+              <div class="orb-halo"></div>
+              <div class="orb-outer-ring"></div>
+              <div class="orb-inner-ring"></div>
+              <div class="orb-center-glow"></div>
+            </div>
+          </div>
+          <h3>System Core Standby</h3>
+          <p>Start a conversation to search online, manage your calendar, send emails, or ask general queries.</p>
+        </div>
+      </div>
+
+      <!-- Chat Input Area -->
+      <div class="input-panel">
+        <div class="chat-input-wrapper">
+          <textarea id="chat-input" rows="1"></textarea>
+          <div id="chat-placeholder" class="chat-placeholder">Ask Bubble anything...</div>
+          <input type="file" id="image-file-input" accept="image/*" style="display: none;">
+          <div class="chat-input-actions" style="justify-content: flex-end;">
+            <button id="send-message-btn" class="send-btn" title="Send Message">
+              <span class="send-icon">➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Model / Tools Shortcut Chips -->
+        <div class="model-shortcuts">
+          <button class="shortcut-chip" data-mode="gemma">
+            <span class="chip-header-row">
+              <span class="chip-title">Gemma</span>
+              <span class="chip-status-dot" id="gemma-status-dot"></span>
+            </span>
+            <span class="chip-sub">Ask AI</span>
+          </button>
+          <button class="shortcut-chip" data-mode="llava">
+            <span class="chip-header-row">
+              <span class="chip-title">LLaVA</span>
+              <span class="chip-status-dot" id="llava-status-dot"></span>
+            </span>
+            <span class="chip-sub">Vision AI</span>
+          </button>
+          <button class="shortcut-chip" data-mode="calendar">
+            <span class="chip-header-row">
+              <span class="chip-title">Calendar</span>
+              <span class="chip-status-dot" id="calendar-status-dot"></span>
+            </span>
+            <span class="chip-sub">Schedule</span>
+          </button>
+          <button class="shortcut-chip" data-mode="gmail">
+            <span class="chip-header-row">
+              <span class="chip-title">Gmail</span>
+              <span class="chip-status-dot" id="gmail-status-dot"></span>
+            </span>
+            <span class="chip-sub">Mail</span>
+          </button>
+          <button class="shortcut-chip" data-mode="chrome">
+            <span class="chip-header-row">
+              <span class="chip-title">Chrome</span>
+              <span class="chip-status-dot" id="chrome-status-dot"></span>
+            </span>
+            <span class="chip-sub">Search</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Panel 3: Right Sidebar (Productivity Panel/Planner) -->
+    <aside class="productivity-panel planner-panel">
+      <!-- Top Header -->
+      <div class="planner-header">
+        <div id="planner-date" class="planner-date">06/07/2026 - Monday</div>
+        <h2 class="planner-title">Today's Agenda</h2>
+      </div>
+
+      <!-- Today's Tasks checklist -->
+      <div class="planner-tasks-section">
+        <div id="tasks-list" class="planner-tasks-list">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+        <button id="add-task-btn" class="planner-add-task-btn">+ Add Task</button>
+      </div>
+
+      <hr class="planner-divider">
+
+      <!-- Upcoming Meetings -->
+      <div class="planner-meetings-section">
+        <h3 class="planner-section-title">Upcoming Meetings</h3>
+        <div id="upcoming-meetings-list" class="planner-meetings-list">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- Bottom Action -->
+      <div class="planner-footer">
+        <button id="add-meeting-btn" class="btn btn-primary add-meeting-btn">+ Add Meeting</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Modal Dialog: Conversation History Backups -->
+  <div id="history-backups-modal" class="modal-overlay hidden">
+    <div class="modal-content history-backups-content">
+      <div class="modal-header">
+        <h3><img src="calendar.svg" class="icon-svg-inline" style="width: 16px; height: 16px; filter: invert(1); margin-right: 6px; vertical-align: middle;">LOCAL CONVERSATION BACKUPS</h3>
+        <button id="close-backups-btn" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body history-backups-body">
+        <div class="backups-sidebar">
+          <div class="backups-search-box">
+            <input type="text" id="backup-search-input" placeholder="Search across all backups...">
+            <button id="backup-search-btn" class="btn btn-primary btn-search-backups">Search</button>
+          </div>
+          <div class="dates-list-title">Backup Dates</div>
+          <div id="backup-dates-list" class="dates-list">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+        <div class="backups-viewer">
+          <div class="viewer-header">
+            <span id="selected-backup-date">Select a date from the left to view logs</span>
+            <div id="backup-actions" class="backup-actions hidden">
+              <button id="export-json-btn" class="btn btn-secondary">Export JSON</button>
+              <button id="export-txt-btn" class="btn btn-secondary">Export TXT</button>
+            </div>
+          </div>
+          <div id="backup-messages-feed" class="backup-messages-feed">
+            <div class="empty-backup-state">No backup date selected</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal (Optional Modal Shell) -->
+  <div id="settings-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>System Settings</h3>
+        <button id="close-settings-btn" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="settings-group">
+          <label>Ollama Connection Check</label>
+          <div class="telemetry-item" id="ollama-telemetry-row">
+            <span><img src="brain.svg" class="icon-svg-inline" style="width: 14px; height: 14px; filter: invert(1); margin-right: 6px; vertical-align: middle;">Brains list</span>
+            <div id="brain-dot" class="status-dot inactive"></div>
+          </div>
+        </div>
+        
+        <div class="settings-group">
+          <label>Gmail & Google Calendar Auth</label>
+          <div class="status-card" id="cal-status-card" style="margin-top: 6px;">
+            <div class="status-header">
+              <span class="status-title">Status badge</span>
+              <span id="cal-connection-status" class="status-badge status-offline">DISCONNECTED</span>
+            </div>
+            <div class="status-action" id="cal-action-area" style="margin-top: 10px;">
+              <a href="/auth/google" class="btn btn-primary btn-full" target="_blank">Connect Calendar</a>
+            </div>
+          </div>
+          <div style="margin-top: 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: bold; text-transform: uppercase;">Calendar & Mail Sync Logs</div>
+          <div id="calendar-logs" class="calendar-logs-box">
+            <div class="log-line system">[CALENDAR] Standby...</div>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <label>UPLINK ENDPOINT</label>
+          <div class="address-box" style="margin-top: 6px; display: flex; align-items: center; justify-content: space-between; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 0.5rem; gap: 0.5rem;">
+            <code id="ws-server-address" style="font-family: monospace; font-size: 0.8rem; color: var(--accent-cyan); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;">ws://[loading...]:3001?role=client</code>
+            <button id="copy-btn" class="btn btn-secondary btn-copy" style="font-size: 0.72rem; padding: 0.25rem 0.5rem; border-radius: 4px;">COPY</button>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <label>Conversation History</label>
+          <button id="backup-history-btn" class="btn btn-secondary btn-full" style="margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.85rem; padding: 0.55rem; border-radius: 8px;">
+            <span><img src="calendar.svg" class="icon-svg-inline" style="width: 14px; height: 14px; filter: invert(1); vertical-align: middle; margin-right: 6px;"></span>
+            <span>View Backup History</span>
+          </button>
+        </div>
+
+        <div class="settings-group">
+          <label>Logs Viewer</label>
+          <button id="toggle-logs-btn" class="btn btn-secondary btn-full" style="margin-top: 6px;">Show System Logs</button>
+          <div id="terminal-logs-wrapper" class="terminal-logs-wrapper">
+            <div id="terminal-logs" class="terminal-logs-box">
+              <div class="log-line system">[SYSTEM] Logs active.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

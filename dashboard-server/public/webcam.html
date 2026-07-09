@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bubble Camera</title>
+  <style>
+    body { background: #000; color: #000; margin: 0; padding: 0; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <!-- Completely invisible but layout-active elements to capture the frame -->
+  <video id="video" width="1280" height="720" autoplay playsinline style="position: absolute; width: 1px; height: 1px; opacity: 0.01; pointer-events: none;"></video>
+  <canvas id="canvas" width="1280" height="720" style="position: absolute; width: 1px; height: 1px; opacity: 0.01; pointer-events: none;"></canvas>
+  
+  <script>
+    async function capture() {
+      try {
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        
+        // Request actual hardware camera access
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            width: { ideal: 1280 },
+            height: { ideal: 720 },
+            facingMode: "user"
+          }
+        });
+        
+        video.srcObject = stream;
+        await new Promise((resolve) => {
+          video.onloadedmetadata = () => resolve();
+        });
+        await video.play();
+        
+        // Wait 1200ms to allow camera sensor auto-exposure / white balance to settle
+        await new Promise(r => setTimeout(r, 1200));
+        
+        // Draw captured frame to canvas
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+        
+        // Turn off camera light immediately by stopping all tracks
+        stream.getTracks().forEach(track => track.stop());
+        
+        // Send base64 to server
+        const res = await fetch('/api/vision/save-capture', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ image: dataUrl })
+        });
+        await res.json();
+        
+        window.captureSuccess = true;
+      } catch (err) {
+        console.error("Webcam capture error:", err);
+        await fetch('/api/vision/save-capture', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ error: err.message || err.toString() })
+        });
+        window.captureSuccess = false;
+      }
+    }
+    capture();
+  </script>
+</body>
+</html>
